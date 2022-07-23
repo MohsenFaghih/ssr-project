@@ -1,9 +1,23 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import Home from '../client/components/Home.js';
+import { StaticRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import {renderRoutes} from 'react-router-config';
+import Routes from '../client/Routes';
 
-export default () => {
-    const content = renderToString(<Home />);
+export default (req, store) => {
+    const context = {};
+    const content = renderToString(
+        <Provider store={store}>
+            <StaticRouter location={req.path} context={context}>
+                {/* We can not use component in SSR because there is no JSX component export */}
+                {/* <Routes /> */}
+
+                {/* Instead we use 'renderRoutes'*/}
+                <div>{renderRoutes(Routes)}</div>
+            </StaticRouter>
+        </Provider>
+    );
 
     return `
         <html>
@@ -15,3 +29,4 @@ export default () => {
         </html>
     `
 }
+

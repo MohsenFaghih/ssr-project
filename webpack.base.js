@@ -1,3 +1,5 @@
+// This is the webpack base config which is shared across all webpack custom config
+
 module.exports = {
     // Tell webpack to run babel on every file it runs through
     module: {
