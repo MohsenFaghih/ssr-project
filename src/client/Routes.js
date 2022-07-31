@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import usersList, { loadData } from './components/usersList';
+import HomePage from './pages/HomePage';
+import UsersListPage from './pages/UsersListPage';
 
 // This is common way for routing
 /*export default () => {
@@ -16,15 +16,14 @@ import usersList, { loadData } from './components/usersList';
 // server side routing
 export default  [
     {
+        ...HomePage,
         path: '/',
-        component: Home,
         exact: true
 
     },
     {
-        loadData,
-        path: '/users',
-        component: usersList,
+        ...UsersListPage,
+        path: '/users'
     }
 ]
 
