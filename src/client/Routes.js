@@ -1,5 +1,6 @@
 import React from 'react';
 // import { Switch, Route } from 'react-router-dom';
+import App from './App'
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 
@@ -12,18 +13,22 @@ import UsersListPage from './pages/UsersListPage';
         </Switch>
     )
 }*/
-
+ 
 // server side routing
-export default  [
+export default [
     {
-        ...HomePage,
-        path: '/',
-        exact: true
-
-    },
-    {
-        ...UsersListPage,
-        path: '/users'
+        ...App,
+        routes: [
+            {
+                ...HomePage,
+                path: '/',
+                exact: true
+            },
+            {
+                ...UsersListPage,
+                path: '/users'
+            }
+        ]
     }
 ]
 
