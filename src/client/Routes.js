@@ -2,6 +2,7 @@ import React from 'react';
 // import { Switch, Route } from 'react-router-dom';
 import App from './App'
 import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 import UsersListPage from './pages/UsersListPage';
 
 // This is common way for routing
@@ -27,6 +28,9 @@ export default [
             {
                 ...UsersListPage,
                 path: '/users'
+            },
+            {
+                ...NotFoundPage
             }
         ]
     }

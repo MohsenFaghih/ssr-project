@@ -26,7 +26,15 @@ app.get('*', (req, res) => {
     })
 
     Promise.all(promiseData).then(()=>{
-        res.send(Renderer(req, store));
+        
+        const context = {};
+        const content = Renderer(req, store, context);
+
+        if(context.notFound){
+            res.status(404);
+        };
+
+        res.send(content);
     })
 
 })
